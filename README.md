@@ -19,6 +19,8 @@ All of the information regarding VSEARCH can be found here: https://github.com/t
 USEARCH is used as well in our SSI-VSEARCH implementation. The download and further information can be found here: https://github.com/rcedgar/usearch12.
 
 ## SSI-MMSeqs2
+SSI-MMSeqs2 is run in Python. This code was run mainly on Rowan University's HPC so the code attached (slurm-script) is the code to call MMSeqs2 and capture the time it takes to run. A database must be used as the input by using MMSeqs2's createdb function, and batches are added using MMSeqs2's clusterupdate function.
+
 The download and inforamtion about MMSeqs2 can be found on this Github repository: https://github.com/soedinglab/MMseqs2.
 
 ## Post-Processing
