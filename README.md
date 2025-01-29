@@ -13,7 +13,6 @@ Before you can run any incremental clustering algoirthms you must first use the 
 
 ## VSEARCH
 All of the information regarding VSEARCH can be found here: https://github.com/torognes/vsearch.
-
 USEARCH is used as well in our SSI-VSEARCH implementation. The download and further information can be found here: https://github.com/rcedgar/usearch12.
 
 ## MMSeqs2
