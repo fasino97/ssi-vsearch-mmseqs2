@@ -11,11 +11,14 @@ The SILVA database: https://www.arb-silva.de/.
 ## Pre-Processing
 Before you can run any incremental clustering algoirthms you must first use the SplitData.py file to sort the data into testing and training data. VSEARCH expects the input file to be a FASTA file, but MMseqs2 requires formatteed databases that can be converted using MMSeqs2 using createdb.py.
 
-## VSEARCH
+## SSI-VSEARCH
+SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you specify the similarity threshold (75-97), taxonomic depth (2-6), associated map, and the vsearch and usearch executable files. Taxonomic depth does not need to be set for running SSI-VSEARCH, as this is only used in the accuracy calculations available when running the IncrementalVSearch.m file. For this improved version of SSI-VSEARCH we use a more specific post-processing code. Talk about creating map and associated utility files.
+
 All of the information regarding VSEARCH can be found here: https://github.com/torognes/vsearch.
+
 USEARCH is used as well in our SSI-VSEARCH implementation. The download and further information can be found here: https://github.com/rcedgar/usearch12.
 
-## MMSeqs2
+## SSI-MMSeqs2
 The download and inforamtion about MMSeqs2 can be found on this Github repository: https://github.com/soedinglab/MMseqs2.
 
 ## Post-Processing
