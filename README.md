@@ -12,7 +12,7 @@ The SILVA database: https://www.arb-silva.de/.
 Before you can run any incremental clustering algoirthms you must first use the SplitData.py file to sort the data into testing and training data. VSEARCH expects the input file to be a FASTA file, but MMseqs2 requires formatteed databases that can be converted using MMSeqs2 using createdb.py.
 
 ## SSI-VSEARCH
-SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you specify the similarity threshold (75-97), taxonomic depth (2-6), associated map, and the vsearch and usearch executable files. Taxonomic depth does not need to be set for running SSI-VSEARCH, as this is only used in the accuracy calculations available when running the IncrementalVSearch.m file. For this improved version of SSI-VSEARCH we use a more specific post-processing code. Talk about creating map and associated utility files.
+SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you specify the similarity threshold (75-97), taxonomic depth (2-6), associated map, and the vsearch and usearch executable files. Taxonomic depth does not need to be set for running SSI-VSEARCH, as this is only used in the accuracy calculations available when running the IncrementalVSearch.m file. For this improved version of SSI-VSEARCH we use a more specific post-processing code. The associated map can be created by running the createMap function where the pecentage of the dataset being mapped can be set. Most users will want to map the entire training dataset. 
 
 All of the information regarding VSEARCH can be found here: https://github.com/torognes/vsearch.
 
@@ -20,6 +20,14 @@ USEARCH is used as well in our SSI-VSEARCH implementation. The download and furt
 
 ## SSI-MMSeqs2
 SSI-MMSeqs2 is run in Python. This code was run mainly on Rowan University's HPC so the code attached (slurm-script) is the code to call MMSeqs2 and capture the time it takes to run. A database must be used as the input by using MMSeqs2's createdb function, and batches are added using MMSeqs2's clusterupdate function.
+
+Example of running SSI-MMSeqs2:
+1. mmseqs createdb training.fasta trainingdb
+2. mmseqs createdb trainingplustesting.fasta trainingplustestingdb
+3. mmseqs cluster trainingdb trainingclusters tmp
+4. mmseqs clusterupdate trainingdb trainingplustestingdb trainingclusters newcombineddb trainingplustestingclusters tmp
+5. mmseqs create tsv newcombineddb newcombineddb trainingplustestingclusters clusters.tsv
+As can be seen the the slurm-script file, tags can be added to the end of the cluster commands to specify  the similarity threshold and other factors.
 
 The download and inforamtion about MMSeqs2 can be found on this Github repository: https://github.com/soedinglab/MMseqs2.
 
