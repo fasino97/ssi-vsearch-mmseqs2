@@ -32,5 +32,5 @@ As can be seen the the slurm-script file, tags can be added to the end of the cl
 The download and inforamtion about MMSeqs2 can be found on this Github repository: https://github.com/soedinglab/MMseqs2.
 
 ## Post-Processing
-Post-processing for SSI-VSEARCH and SSI-MMSeqs2 can be found in two seperate codes. SSI-VSEARCH's post-processing code requires .cd-hit files. SSI-MMSeqs2's post-processing requires a .tsv file. This is not the file immeditately given when MMSeqs2 clusters, so that output result must be put through MMSeqs2's createtsv function to get the proper file format.
+Post-processing for SSI-VSEARCH and SSI-MMSeqs2 can be found in two seperate codes. SSI-VSEARCH's post-processing code requires .cd-hit files. SSI-MMSeqs2's post-processing requires a .tsv file. This is not the file immeditately given when MMSeqs2 clusters, so that output result must be put through MMSeqs2's createtsv function to get the proper file format. Both codes run similarly; inputs for both are a training fasta file, a testing fasta file, and the clustering output file. 
 
