@@ -25,7 +25,7 @@ SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you s
 SSI-MMSeqs2 is run in Python. This code was run mainly on Rowan University's HPC so the code attached (slurm-script) is the code to call MMSeqs2 and capture the time it takes to run. A database must be used as the input by using MMSeqs2's createdb function, and batches are added using MMSeqs2's clusterupdate function.
 
 Example of running SSI-MMSeqs2:
-1. '''mmseqs createdb training.fasta trainingdb'''
+1. ```mmseqs createdb training.fasta trainingdb```
 2. mmseqs createdb trainingplustesting.fasta trainingplustestingdb
 3. mmseqs cluster trainingdb trainingclusters tmp
 4. mmseqs clusterupdate trainingdb trainingplustestingdb trainingclusters newcombineddb trainingplustestingclusters tmp
