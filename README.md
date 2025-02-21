@@ -24,9 +24,13 @@ SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you s
 ### Example of running SSI-VSEARCH
 To run SSI-VSEARCH you start by splitting the fasta file into training and testing files. Then use the runTaxMaps file to create a taxonomic map for the dataset you are using; the hiddenLabelMap should be created with the training data and the taxLookupMap should be all of the data. Using VSearchtest.m, run the IncrementalVsearch function using the commands below:
 ```phylum75=IncrementalVsearch(75,2,'RDPexample','vsearch.exe','usearch.exe');```
+
 ```phylum75.addBatch('RDP/batch1.fasta',2);```
+
 ...
+
 ```phylum75.addBatch('RDP/RDPtest.fasta',2)```
+
 The variable phylum75 can be changed, as long as it stays consistant to call the addBatch function. This should output a temp folder with a members.cd-hit file that can then be input into the post-processing code.
 
 ## SSI-MMSeqs2
