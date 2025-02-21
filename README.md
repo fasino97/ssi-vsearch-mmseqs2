@@ -19,12 +19,20 @@ The download and inforamtion about MMSeqs2 can be found on this Github repositor
 Before you can run any incremental clustering algoirthms you must first use the SplitData.py file to sort the data into testing and training data. VSEARCH expects the input file to be a FASTA file, but MMseqs2 requires formatteed databases that can be converted using MMSeqs2 using createdb.py.
 
 ## SSI-VSEARCH
-SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you specify the similarity threshold (75-97), taxonomic depth (2-6), associated map, and the vsearch and usearch executable files. Taxonomic depth does not need to be set for running SSI-VSEARCH, as this is only used in the accuracy calculations available when running the IncrementalVSearch.m file. For this improved version of SSI-VSEARCH we use a more specific post-processing code. The associated map can be created by running the createMap function where the pecentage of the dataset being mapped can be set. Most users will want to map the entire training dataset. 
+SSI-VSEARCH is run in Matlab. The main code is run in VSearchtest.m, where you specify the similarity threshold (75-97), taxonomic depth (2-6), associated map, and the vsearch and usearch executable files. Taxonomic depth does not need to be set for running SSI-VSEARCH, as this is only used in the accuracy calculations available when running the IncrementalVSearch.m file. For this improved version of SSI-VSEARCH we use a more specific post-processing code. The associated map can be created by running the createMap function where the pecentage of the dataset being mapped can be set. Most users will want to map the entire dataset. 
+
+### Example of running SSI-VSEARCH
+To run SSI-VSEARCH you start by splitting the fasta file into training and testing files. Then use the runTaxMaps file to create a taxonomic map for the dataset you are using; the hiddenLabelMap should be created with the training data and the taxLookupMap should be all of the data. Using VSearchtest.m, run the IncrementalVsearch function using the commands below:
+```phylum75=IncrementalVsearch(75,2,'RDPexample','vsearch.exe','usearch.exe');```
+```phylum75.addBatch('RDP/batch1.fasta',2);```
+...
+```phylum75.addBatch('RDP/RDPtest.fasta',2)```
+The variable phylum75 can be changed, as long as it stays consistant to call the addBatch function. This should output a temp folder with a members.cd-hit file that can then be input into the post-processing code.
 
 ## SSI-MMSeqs2
 SSI-MMSeqs2 is run in Python. This code was run mainly on Rowan University's HPC so the code attached (slurm-script) is the code to call MMSeqs2 and capture the time it takes to run. A database must be used as the input by using MMSeqs2's createdb function, and batches are added using MMSeqs2's clusterupdate function.
 
-Example of running SSI-MMSeqs2:
+### Example of running SSI-MMSeqs2:
 1. ```mmseqs createdb training.fasta trainingdb```
 2. ```mmseqs createdb trainingplustesting.fasta trainingplustestingdb```
 3. ```mmseqs cluster trainingdb trainingclusters tmp```
@@ -33,5 +41,4 @@ Example of running SSI-MMSeqs2:
 Tags can be included at the end of those commands to specific similarity threshold. Examples used in this experiment include: ```--min-seq-id 0.75``` tp set the similarity threshold to 75%, ```--cluster-mode 0``` to make sure the clustering is the default method.
 
 ## Post-Processing
-Post-processing for SSI-VSEARCH and SSI-MMSeqs2 can be found in two seperate codes. SSI-VSEARCH's post-processing code requires .cd-hit files. SSI-MMSeqs2's post-processing requires a .tsv file. This is not the file immeditately given when MMSeqs2 clusters, so that output result must be put through MMSeqs2's createtsv function to get the proper file format. Both codes run similarly; inputs for both are a training fasta file, a testing fasta file, and the clustering output file. 
-
+Post-processing for SSI-VSEARCH and SSI-MMSeqs2 can be found in two seperate files. SSI-VSEARCH's post-processing code requires .cd-hit files. SSI-MMSeqs2's post-processing requires a .tsv file. This is not the file immeditately given when MMSeqs2 clusters, so that output result must be put through MMSeqs2's createtsv function to get the proper file format. Both codes run similarly; inputs for both are a training fasta file, a testing fasta file, and the clustering output file. 
