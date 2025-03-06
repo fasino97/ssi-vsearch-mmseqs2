@@ -35,7 +35,7 @@ To run SSI-VSEARCH you start by splitting the fasta file into training and testi
 The variable phylum75 can be changed, as long as it stays consistant to call the addBatch function. This should output a temp folder with a members.cd-hit file that can then be input into the post-processing code.
 
 ## SSI-MMSeqs2
-SSI-MMSeqs2 is run in Python. This code was run mainly on Rowan University's HPC so the code attached (slurm-script) is the code to call MMSeqs2 and capture the time it takes to run. A database must be used as the input by using MMSeqs2's createdb function, and batches are added using MMSeqs2's clusterupdate function.
+SSI-MMSeqs2 is run in Python. This code was run mainly on Rowan University's HPC so MMSeqs2 was being used directly in a linux environment. A database must be used as the input by using MMSeqs2's createdb function, and batches are added using MMSeqs2's clusterupdate function.
 
 ### Example of running SSI-MMSeqs2:
 1. ```mmseqs createdb training.fasta trainingdb```
