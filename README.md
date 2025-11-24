@@ -5,8 +5,10 @@ This repository contains all of the files necessary to run accuracy, homogeneity
 The two databases used in the accompanying paper are the Ribosmal Database Project (RDP) and the SILVA rRNA database project:
 
 The RDP database: https://www.glbrc.org/data-and-tools/glbrc-data-sets/ribosomal-database-project.
+The curated subset used in these experiments can be found on FigShare here: https://doi.org/10.6084/m9.figshare.30653189.v1.
 
 The SILVA database: https://www.arb-silva.de/.
+The curated subset used in these experiments can be found on FigShare here: https://doi.org/10.6084/m9.figshare.30461177.v1.
 
 Vsearch, Usearch and MMSeqs2 are all necessary to make all aspects of this repository work.
 All of the information regarding VSEARCH can be found here: https://github.com/torognes/vsearch.
